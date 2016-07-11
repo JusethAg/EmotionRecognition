@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">EmotionRecognition</string>
+
+    <string name="splash.credits">Made with http://logomakr.com</string>
 </resources>
