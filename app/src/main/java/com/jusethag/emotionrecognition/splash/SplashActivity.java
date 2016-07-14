@@ -10,13 +10,13 @@ import android.widget.TextView;
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
 import com.jusethag.emotionrecognition.R;
-import com.jusethag.emotionrecognition.login.LoginActivity;
+import com.jusethag.emotionrecognition.login.ui.LoginActivity;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class SplashActivity extends AppCompatActivity{
-    @Bind(R.id.logo)
+    @Bind(R.id.imgLogo)
     ImageView logo;
     @Bind(R.id.credits)
     TextView credits;

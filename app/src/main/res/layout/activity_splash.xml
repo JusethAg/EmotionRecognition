@@ -7,10 +7,11 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@drawable/background"
     tools:context=".splash.SplashActivity">
 
     <ImageView
-        android:id="@+id/logo"
+        android:id="@+id/imgLogo"
         android:layout_width="250dp"
         android:layout_height="150dp"
         android:scaleType="centerInside"
@@ -21,8 +22,9 @@
         android:id="@+id/credits"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/logo"
+        android:layout_below="@id/imgLogo"
         android:text="@string/splash.credits"
+        android:textColor="@color/colorAccent"
         android:layout_centerInParent="true"
         android:layout_gravity="center_horizontal"
         android:autoLink="web" />

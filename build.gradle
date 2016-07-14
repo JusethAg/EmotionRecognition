@@ -33,6 +33,7 @@ ext {
 
     butterknifeVersion = '7.0.1'
     eventbusVersion = '3.0.0'
+    firebaseClientVersion = '2.5.0'
     daggerVersion = '2.0.1'
     jsr250Version = '1.0'
     gsonVersion = '2.5'

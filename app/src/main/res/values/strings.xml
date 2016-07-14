@@ -1,5 +1,18 @@
 <resources>
     <string name="app_name">EmotionRecognition</string>
 
-    <string name="splash.credits">Made with http://logomakr.com</string>
+    <!--<string name="splash.credits">Made with http://logomakr.com</string>-->
+    <string name="splash.credits">Developed by Mauri Agueda</string>
+
+    <string name="login.hint.email">Correo electrónico</string>
+    <string name="login.hint.password">Contraseña</string>
+    <string name="login.button.signin">Iniciar sesión</string>
+    <string name="login.button.signup">Crear cuenta</string>
+    <string name="login.notice.message.useradded">Usuario registrado exitosamente</string>
+    <string name="login.error.message.signin">Imposible iniciar sesión %s</string>
+    <string name="login.error.message.signup">Imposible registrar usuario %s</string>
+    <string name="login.error.message.emailempty">Necesita ingresar una cuenta de correo</string>
+    <string name="login.error.message.passwordempty">Necesita ingresar una contraseña</string>
+
+
 </resources>

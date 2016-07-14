@@ -37,6 +37,7 @@ dependencies {
 
     compile "com.jakewharton:butterknife:$rootProject.ext.butterknifeVersion"
     compile "org.greenrobot:eventbus:$rootProject.ext.eventbusVersion"
+    compile "com.firebase:firebase-client-android:$rootProject.ext.firebaseClientVersion"
 
     compile "com.nineoldandroids:library:$rootProject.ext.nineoldandroidsVersion"
     compile "com.daimajia.easing:library:$rootProject.ext.easingVesrion"
