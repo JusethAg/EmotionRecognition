@@ -56,8 +56,8 @@ public class MainListActivity extends AppCompatActivity implements MainListView{
     @Bind(R.id.progressBar)
     ProgressBar progressBar;
 
-    @Bind(R.id.testImage)
-    ImageView testImage;
+    /*@Bind(R.id.testImage)
+    ImageView testImage;*/
 
     @Inject
     MainListPresenter mainListPresenter;
@@ -195,9 +195,9 @@ public class MainListActivity extends AppCompatActivity implements MainListView{
                 photoPath = getRealPathFromURI(data.getData());
             }
 
-            Bitmap myBitmap = BitmapFactory.decodeFile(photoPath);
-            testImage.setImageBitmap(myBitmap);
-            mainListPresenter.recognizeEmotion(myBitmap);
+            Bitmap bitmap = BitmapFactory.decodeFile(photoPath);
+
+            mainListPresenter.recognizeEmotion(bitmap);
         }
     }
 

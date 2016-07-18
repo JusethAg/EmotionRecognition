@@ -73,12 +73,15 @@ public class MainListPresenterImpl implements MainListPresenter {
             switch (mainRecognizeEvent.getType()) {
                 case MainRecognizeEvent.RECOGNIZE_INIT:
                     mainListView.onMakeRecognitionInit();
+                    mainListView.showProgress();
                     break;
                 case MainRecognizeEvent.RECOGNIZE_COMPLETED:
                     mainListView.onMakeRecognitionCompleted();
+                    mainListView.hideProgress();
                     break;
                 case MainRecognizeEvent.RECOGNIZE_ERROR:
                     mainListView.onMakeRecognitionError(error);
+                    mainListView.hideProgress();
                     break;
             }
         }

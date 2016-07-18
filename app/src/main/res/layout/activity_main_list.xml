@@ -24,12 +24,6 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <ImageView
-        android:id="@+id/testImage"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:background="@color/colorPrimary"/>
-
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
@@ -42,7 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
         android:layout_margin="@dimen/fab_margin"
-        android:tint="@color/colorPrimary"
+        android:tint="@color/colorText"
         app:backgroundTint="@color/colorAccent"
         android:src="@android:drawable/ic_menu_camera" />
 
@@ -51,6 +45,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/progressBar"
+        android:layout_gravity="center"
         android:layout_centerInParent="true"
         android:visibility="gone" />
 

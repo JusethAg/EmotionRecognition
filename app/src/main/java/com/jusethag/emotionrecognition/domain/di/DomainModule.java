@@ -23,7 +23,7 @@ public class DomainModule {
 
     @Provides
     @Singleton
-    Firebase providesFirebase() {
+    Firebase providesFirebase(){
         return new Firebase(FIREBASE_URL);
     }
 
