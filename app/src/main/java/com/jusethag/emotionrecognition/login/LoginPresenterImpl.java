@@ -39,7 +39,7 @@ public class LoginPresenterImpl implements LoginPresenter {
     @Override
     public void onEventMainThread(LoginEvent event) {
 
-        switch (event.getEventType()){
+        switch (event.getType()){
             case LoginEvent.onSignInError:
                 onSignInError(event.getErrorMesage());
                 break;

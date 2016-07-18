@@ -1,6 +1,5 @@
 package com.jusethag.emotionrecognition.login.di;
 
-import com.jusethag.emotionrecognition.EmotionRecognitionAppModule;
 import com.jusethag.emotionrecognition.domain.di.DomainModule;
 import com.jusethag.emotionrecognition.lib.di.LibsModule;
 import com.jusethag.emotionrecognition.login.ui.LoginActivity;
@@ -14,8 +13,7 @@ import dagger.Component;
  */
 
 @Singleton
-@Component(modules = {LoginModule.class, LibsModule.class, /*EmotionRecognitionAppModule.class,*/
-        DomainModule.class})
+@Component(modules = {LoginModule.class, LibsModule.class, DomainModule.class})
 public interface LoginComponent {
     void inject(LoginActivity loginActivity);
 }

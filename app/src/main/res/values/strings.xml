@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">EmotionRecognition</string>
 
+    <string name="application.name">Reconocimiento de emociones</string>
     <!--<string name="splash.credits">Made with http://logomakr.com</string>-->
     <string name="splash.credits">Developed by Mauri Agueda</string>
 
@@ -14,5 +15,10 @@
     <string name="login.error.message.emailempty">Necesita ingresar una cuenta de correo</string>
     <string name="login.error.message.passwordempty">Necesita ingresar una contraseña</string>
 
+    <string name="main.menu.action.logout">Cerrar sesión</string>
+    <string name="main.error.dispatch.camera">Error al crear archivo</string>
+    <string name="main.message.picture.source">Selecciona una foto</string>
+
+    <string name="lib.emotion.error.notdetected">Emoción(es) no detectada(s)</string>
 
 </resources>

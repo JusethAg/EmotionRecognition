@@ -13,7 +13,7 @@ import dagger.Provides;
  */
 @Module
 public class DomainModule {
-    private final static String FIREBASE_URL = "URL_OF_FIREBASE_APPLICATION";
+    private final static String FIREBASE_URL = "URL_FIREBASE";
 
     @Provides
     @Singleton
@@ -23,7 +23,7 @@ public class DomainModule {
 
     @Provides
     @Singleton
-    Firebase providesFirebase(){
+    Firebase providesFirebase() {
         return new Firebase(FIREBASE_URL);
     }
 

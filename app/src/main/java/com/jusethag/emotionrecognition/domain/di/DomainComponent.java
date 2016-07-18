@@ -1,7 +1,5 @@
 package com.jusethag.emotionrecognition.domain.di;
 
-import com.jusethag.emotionrecognition.EmotionRecognitionAppModule;
-
 import javax.inject.Singleton;
 
 import dagger.Component;
@@ -11,6 +9,6 @@ import dagger.Component;
  */
 
 @Singleton
-@Component(modules = {DomainModule.class /*EmotionRecognitionAppModule.class*/})
+@Component(modules = {DomainModule.class })
 public interface DomainComponent {
 }

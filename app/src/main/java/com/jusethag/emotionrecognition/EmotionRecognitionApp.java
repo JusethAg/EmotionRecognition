@@ -11,6 +11,10 @@ import com.jusethag.emotionrecognition.login.di.DaggerLoginComponent;
 import com.jusethag.emotionrecognition.login.di.LoginComponent;
 import com.jusethag.emotionrecognition.login.di.LoginModule;
 import com.jusethag.emotionrecognition.login.ui.LoginView;
+import com.jusethag.emotionrecognition.main.di.DaggerMainListComponent;
+import com.jusethag.emotionrecognition.main.di.MainListComponent;
+import com.jusethag.emotionrecognition.main.di.MainListModule;
+import com.jusethag.emotionrecognition.main.ui.MainListView;
 
 /**
  * Created by JusethAg on 7/12/16.
@@ -20,7 +24,7 @@ public class EmotionRecognitionApp extends Application {
 
     private LibsModule libsModule;
     private DomainModule domainModule;
-    private EmotionRecognitionAppModule emotionRecognitionAppModule;
+
 
     @Override
     public void onCreate() {
@@ -32,7 +36,7 @@ public class EmotionRecognitionApp extends Application {
     private void initModules() {
         libsModule = new LibsModule();
         domainModule = new DomainModule();
-        emotionRecognitionAppModule = new EmotionRecognitionAppModule(this);
+
     }
 
     private void initFirebase() {
@@ -45,9 +49,19 @@ public class EmotionRecognitionApp extends Application {
         return DaggerLoginComponent
                 .builder()
                 .libsModule(libsModule)
-                //.emotionRecognitionAppModule(emotionRecognitionAppModule)
                 .domainModule(domainModule)
                 .loginModule(new LoginModule(loginView))
                 .build();
+        //return null;
+    }
+
+    public MainListComponent getMainListComponent(MainListView mainListView) {
+        return DaggerMainListComponent
+                .builder()
+                .libsModule(libsModule)
+                .domainModule(domainModule)
+                .mainListModule(new MainListModule(mainListView))
+                .build();
+        //return null;
     }
 }

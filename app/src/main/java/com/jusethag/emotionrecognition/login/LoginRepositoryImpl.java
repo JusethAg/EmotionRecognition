@@ -1,7 +1,6 @@
 package com.jusethag.emotionrecognition.login;
 
 import com.firebase.client.FirebaseError;
-import com.firebase.client.core.view.Event;
 import com.jusethag.emotionrecognition.domain.FirebaseAPI;
 import com.jusethag.emotionrecognition.domain.FirebaseActionListenerCallback;
 import com.jusethag.emotionrecognition.lib.base.EventBus;
@@ -81,7 +80,7 @@ public class LoginRepositoryImpl implements LoginRepository {
 
     private void post(int type, String errorMessage) {
         LoginEvent loginEvent = new LoginEvent();
-        loginEvent.setEventType(type);
+        loginEvent.setType(type);
         loginEvent.setErrorMesage(errorMessage);
         eventBus.post(loginEvent);
     }

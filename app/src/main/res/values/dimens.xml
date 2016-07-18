@@ -12,4 +12,6 @@
     <dimen name="line_separator_height">30dp</dimen>
 
     <dimen name="font_size_button">15dp</dimen>
+    <dimen name="appbar_padding_top">8dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
 </resources>

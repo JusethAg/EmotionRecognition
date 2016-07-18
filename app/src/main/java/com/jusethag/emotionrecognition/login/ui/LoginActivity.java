@@ -7,17 +7,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
 import com.jusethag.emotionrecognition.EmotionRecognitionApp;
 import com.jusethag.emotionrecognition.R;
 import com.jusethag.emotionrecognition.login.LoginPresenter;
-import com.jusethag.emotionrecognition.login.LoginPresenterImpl;
+import com.jusethag.emotionrecognition.main.ui.MainListActivity;
 
 import javax.inject.Inject;
 
@@ -27,7 +25,7 @@ import butterknife.OnClick;
 
 public class LoginActivity extends AppCompatActivity implements LoginView{
 
-    @Bind(R.id.layoutContainer)
+    @Bind(R.id.login_container)
     RelativeLayout layoutContainer;
     @Bind(R.id.progressBar)
     ProgressBar progressBar;
@@ -43,7 +41,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView{
     @Inject
     LoginPresenter loginPresenter;
 
-    private EmotionRecognitionApp app;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +49,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView{
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
 
-        app = (EmotionRecognitionApp) getApplication();
+
 
         setupInjection();
 
@@ -67,6 +65,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView{
     }
 
     private void setupInjection() {
+        EmotionRecognitionApp app = (EmotionRecognitionApp) getApplication();
         app.getLoginComponent(this).inject(this);
     }
 
@@ -119,9 +118,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView{
     @Override
     public void navigateToMainScreen() {
         //No history attribute on AndroidManifest
-        //startActivity(new Intent(this, MainActivity.class));
-        Snackbar.make(layoutContainer, "sigin",
-                Snackbar.LENGTH_LONG).show();
+        startActivity(new Intent(this, MainListActivity.class));
     }
 
     @Override

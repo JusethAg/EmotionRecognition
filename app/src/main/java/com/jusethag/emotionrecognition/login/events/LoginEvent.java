@@ -13,15 +13,15 @@ public class LoginEvent {
     public final static int onEmptyPasswordInput = 6;
 
 
-    private int eventType;
+    private int type;
     private String errorMesage;
 
-    public int getEventType() {
-        return eventType;
+    public int getType() {
+        return type;
     }
 
-    public void setEventType(int eventType) {
-        this.eventType = eventType;
+    public void setType(int type) {
+        this.type = type;
     }
 
     public String getErrorMesage() {
