@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 
 import com.jusethag.emotionrecognition.entities.Recognition;
 import com.jusethag.emotionrecognition.main.events.MainListEvent;
+import com.jusethag.emotionrecognition.main.events.MainRecognizeEvent;
 import com.jusethag.emotionrecognition.main.ui.MainListView;
 
 /**
@@ -21,7 +22,8 @@ public interface MainListPresenter {
     void recognizeEmotion(Bitmap bitmap);
 
 
-    void onEventMainThread(MainListEvent mainListEvent);
+    void onEventMainListThread(MainListEvent mainListEvent);
+    void onEventMainRecognizeThread(MainRecognizeEvent mainRecognizeEvent);
 
     MainListView getView();
 

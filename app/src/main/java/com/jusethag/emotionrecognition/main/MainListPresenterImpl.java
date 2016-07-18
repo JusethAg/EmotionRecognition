@@ -2,9 +2,9 @@ package com.jusethag.emotionrecognition.main;
 
 import android.graphics.Bitmap;
 
-import com.jusethag.emotionrecognition.entities.Recognition;
 import com.jusethag.emotionrecognition.lib.base.EventBus;
 import com.jusethag.emotionrecognition.main.events.MainListEvent;
+import com.jusethag.emotionrecognition.main.events.MainRecognizeEvent;
 import com.jusethag.emotionrecognition.main.ui.MainListView;
 
 import org.greenrobot.eventbus.Subscribe;
@@ -46,10 +46,7 @@ public class MainListPresenterImpl implements MainListPresenter {
         mainListInteractor.logout();
     }
 
-    /*@Override
-    public void recognizeEmotion(Recognition recognition) {
-        mainListInteractor.makeRecognition(recognition);
-    }*/
+
 
     public void recognizeEmotion(Bitmap bitmap) {
         mainListInteractor.makeRecognition(bitmap);
@@ -57,11 +54,31 @@ public class MainListPresenterImpl implements MainListPresenter {
 
     @Override
     @Subscribe
-    public void onEventMainThread(MainListEvent mainListEvent) {
+    public void onEventMainListThread(MainListEvent mainListEvent) {
         if (this.mainListView != null) {
             switch (mainListEvent.getType()) {
-                case MainListEvent.READ_EVENT:
+                case MainListEvent.READ_LIST_EVENT_SUCCESS:
                     mainListView.showList();
+                    break;
+            }
+        }
+    }
+
+    @Override
+    @Subscribe
+    public void onEventMainRecognizeThread(MainRecognizeEvent mainRecognizeEvent) {
+        String error = mainRecognizeEvent.getError();
+
+        if (this.mainListView != null) {
+            switch (mainRecognizeEvent.getType()) {
+                case MainRecognizeEvent.RECOGNIZE_INIT:
+                    mainListView.onMakeRecognitionInit();
+                    break;
+                case MainRecognizeEvent.RECOGNIZE_COMPLETED:
+                    mainListView.onMakeRecognitionCompleted();
+                    break;
+                case MainRecognizeEvent.RECOGNIZE_ERROR:
+                    mainListView.onMakeRecognitionError(error);
                     break;
             }
         }

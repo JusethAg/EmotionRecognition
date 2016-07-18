@@ -7,6 +7,7 @@ import android.util.Log;
 import com.jusethag.emotionrecognition.entities.FeelingScores;
 import com.jusethag.emotionrecognition.lib.base.EmotionService;
 import com.jusethag.emotionrecognition.lib.base.EmotionServiceFinishedListener;
+import com.jusethag.emotionrecognition.main.events.MainRecognizeEvent;
 import com.microsoft.projectoxford.emotion.EmotionServiceClient;
 
 
@@ -46,21 +47,21 @@ public class MainListRepositoryImpl implements MainListRepository {
         FlowCursorList<Recognition> storedRecognitions = SQLite.select()
                 .from(Recognition.class)
                 .cursorList();
-        postRecognition(MainListEvent.READ_EVENT, storedRecognitions.getAll());
+        postRecognition(MainListEvent.READ_LIST_EVENT_SUCCESS, storedRecognitions.getAll());
         storedRecognitions.close();
     }
 
     public void makeRecognizePhoto(Bitmap bitmap) {
+        postFeelingScores(MainRecognizeEvent.RECOGNIZE_INIT, null);
         emotionService.recognizeEmotionsOnImage(bitmap, new EmotionServiceFinishedListener() {
             @Override
             public void onSuccess(List<FeelingScores> feelingScoresList) {
-                Log.e(getClass().getName(), String.valueOf(feelingScoresList.get(0).getAnger()));
-                postFeelingScores(MainListEvent.RECOGNIZE_EVENT, feelingScoresList);
+                postFeelingScores(MainRecognizeEvent.RECOGNIZE_COMPLETED, feelingScoresList);
             }
 
             @Override
             public void onError(String error) {
-                post(MainListEvent.RECOGNIZE_ERROR);
+                postFeelingScoresError(MainRecognizeEvent.RECOGNIZE_ERROR, error);
             }
         });
     }
@@ -79,15 +80,22 @@ public class MainListRepositoryImpl implements MainListRepository {
     }
 
     private void postFeelingScores(int type, List<FeelingScores> feelingScoresList) {
-        MainListEvent event = new MainListEvent();
+        MainRecognizeEvent event = new MainRecognizeEvent();
         event.setFeelingScoresList(feelingScoresList);
         event.setType(type);
         eventBus.post(event);
     }
 
-    private void post(int type){
+    private void postRecognitionError(int type, String error){
         MainListEvent event = new MainListEvent();
         event.setType(type);
+        event.setError(error);
+        eventBus.post(event);
+    }
+    private void postFeelingScoresError(int type, String error){
+        MainRecognizeEvent event = new MainRecognizeEvent();
+        event.setType(type);
+        event.setError(error);
         eventBus.post(event);
     }
 }

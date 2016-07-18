@@ -11,13 +11,14 @@ import java.util.List;
 
 public class MainListEvent {
 
-    public final static int READ_EVENT = 0;
-    public final static int RECOGNIZE_EVENT = 1;
-    public final static int RECOGNIZE_ERROR = 2;
+    public final static int READ_LIST_EVENT_SUCCESS = 0;
+    public final static int READ_LIST_EVENT_ERROR = 1;
+
 
     private int type;
+    private String error;
     private List<Recognition> recognitionList;
-    private List<FeelingScores> feelingScoresList;
+
 
 
     public int getType() {
@@ -28,6 +29,14 @@ public class MainListEvent {
         this.type = type;
     }
 
+    public String getError() {
+        return error;
+    }
+
+    public void setError(String error) {
+        this.error = error;
+    }
+
     public List<Recognition> getRecognitionList() {
         return recognitionList;
     }
@@ -36,11 +45,5 @@ public class MainListEvent {
         this.recognitionList = recognitionList;
     }
 
-    public List<FeelingScores> getFeelingScoresList() {
-        return feelingScoresList;
-    }
 
-    public void setFeelingScoresList(List<FeelingScores> feelingScoresList) {
-        this.feelingScoresList = feelingScoresList;
-    }
 }

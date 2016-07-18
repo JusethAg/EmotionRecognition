@@ -13,18 +13,21 @@ import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 
 import com.jusethag.emotionrecognition.EmotionRecognitionApp;
 import com.jusethag.emotionrecognition.R;
-import com.jusethag.emotionrecognition.entities.Recognition;
+
 import com.jusethag.emotionrecognition.login.ui.LoginActivity;
 import com.jusethag.emotionrecognition.main.MainListPresenter;
-import com.jusethag.emotionrecognition.main.events.MainListEvent;
+
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -44,11 +47,14 @@ import butterknife.OnClick;
 
 public class MainListActivity extends AppCompatActivity implements MainListView{
 
-
-    @Bind(R.id.toolbar)
-    Toolbar toolbar;
     @Bind(R.id.main_container)
     CoordinatorLayout mainContainer;
+    @Bind(R.id.toolbar)
+    Toolbar toolbar;
+    @Bind(R.id.recyclerView)
+    RecyclerView recyclerView;
+    @Bind(R.id.progressBar)
+    ProgressBar progressBar;
 
     @Bind(R.id.testImage)
     ImageView testImage;
@@ -162,7 +168,6 @@ public class MainListActivity extends AppCompatActivity implements MainListView{
         try {
             String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
             String imageFileName = "JPEG_" + timeStamp + "_";
-            //File storageDir = Environment.getDataDirectory();
             File storageDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
 
 
@@ -247,28 +252,42 @@ public class MainListActivity extends AppCompatActivity implements MainListView{
 
     @Override
     public void showList() {
-
+        recyclerView.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void hideList() {
-
+        recyclerView.setVisibility(View.GONE);
     }
 
     @Override
     public void showProgress() {
-
+        progressBar.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void hideProgress() {
-
+        progressBar.setVisibility(View.GONE);
     }
-
 
     @Override
-    public void onGetPictureError(String error) {
-
+    public void onMakeRecognitionInit() {
+        Snackbar.make(mainContainer,
+                getString(R.string.main_message_recognition_init), Snackbar.LENGTH_SHORT).show();
     }
+
+    @Override
+    public void onMakeRecognitionCompleted() {
+        Snackbar.make(mainContainer,
+                getString(R.string.main_message_recognition_completed), Snackbar.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onMakeRecognitionError(String error) {
+        Snackbar.make(mainContainer,
+                String.format(getString(R.string.main_message_recognition_init), error),
+                        Snackbar.LENGTH_SHORT).show();
+    }
+
 
 }

@@ -13,5 +13,7 @@ public interface MainListView {
     void showProgress();
     void hideProgress();
 
-    void onGetPictureError(String error);
+    void onMakeRecognitionInit();
+    void onMakeRecognitionCompleted();
+    void onMakeRecognitionError(String error);
 }

@@ -18,6 +18,9 @@
     <string name="main.menu.action.logout">Cerrar sesión</string>
     <string name="main.error.dispatch.camera">Error al crear archivo</string>
     <string name="main.message.picture.source">Selecciona una foto</string>
+    <string name="main.message.recognition.init">Iniciando reconocimiento</string>
+    <string name="main.message.recognition.completed">Reconocimiento finalizado</string>
+    <string name="main.error.message.recognition">Error en el reconocimiento: %s</string>
 
     <string name="lib.emotion.error.notdetected">Emoción(es) no detectada(s)</string>
 

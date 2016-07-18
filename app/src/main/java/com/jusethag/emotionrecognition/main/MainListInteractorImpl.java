@@ -20,10 +20,6 @@ public class MainListInteractorImpl implements MainListInteractor {
         mainListRepository.getSavedRecognitions();
     }
 
-    /*@Override
-    public void makeRecognition(Recognition recognition) {
-        mainListRepository.makeRecognizePhoto(recognition);
-    }*/
 
     public void makeRecognition(Bitmap bitmap) {
         mainListRepository.makeRecognizePhoto(bitmap);
